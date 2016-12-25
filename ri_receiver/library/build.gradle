@@ -1,0 +1,50 @@
+/* Copyright (c) 2016 Keita Kita
+ *
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
+apply plugin: 'com.android.library'
+
+ext {
+    jarFileDirectory = file('build/intermediates/bundles/debug')
+    jarName = 'classes.jar'
+    unityPluginDirectory = file('../../RI_AR/Assets/Plugins/Android')
+    deployedJarName = 'ri_receiver.jar'
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+task deploy(type: Copy, dependsOn: build) {
+    description 'Deploy the JAR library to the Unity project'
+
+    from(jarFileDirectory) {
+        include jarName
+        rename jarName, deployedJarName
+    }
+    into unityPluginDirectory
+}

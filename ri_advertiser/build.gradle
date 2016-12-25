@@ -1,0 +1,43 @@
+/* Copyright (c) 2016 Keita Kita
+ *
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
+ext {
+    piHostName = 'pi'
+    pythonModuleDirectory = file('ri_advertiser')
+    pythonTestDirectory = file('test')
+}
+
+task flake8(type: Exec) {
+    executable 'sh'
+    args '-c', "flake8 $pythonModuleDirectory $pythonTestDirectory"
+}
+
+task check(dependsOn: flake8) {
+    description 'Check scripts by flake8'
+}
+
+task test(type: Exec) {
+    description 'Test scripts by nose'
+    executable 'sh'
+    args '-c', 'nosetests'
+}
+
+task deployPythonModule(type: Exec) {
+    description "Deploy Python modules to host ${piHostName}:~"
+    executable 'sh'
+    args '-c', "scp -p -r ${pythonModuleDirectory} ${piHostName}:~"
+}
+
+task deployRunScript(type: Exec) {
+    description "Deploy run script to ${piHostName}:~"
+    executable 'sh'
+    args '-c', "scp -p *.sh ${piHostName}:~"
+}
+
+task deploy(dependsOn: [test, check, deployPythonModule, deployRunScript]) {
+    description 'Check and test, deploy to Raspberry Pi'
+}
+
