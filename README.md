@@ -24,6 +24,7 @@ The infrared rays sensor receives infrared rays from the remote control. When it
 
 * bash
 * Python 3 + [RPi.GPIO](https://pypi.python.org/pypi/RPi.GPIO)
+* BlueZ
 * Bluetooth Low Energy
 
 ### Infrared rays sensor

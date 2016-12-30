@@ -24,6 +24,7 @@ Raspberry Piは、GPIO経由で赤外線センサと接続します。また、
 
 * bash
 * Python 3 + [RPi.GPIO](https://pypi.python.org/pypi/RPi.GPIO)
+* BlueZ
 * Bluetooth Low Energy
 
 ### 赤外線センサ
