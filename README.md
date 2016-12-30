@@ -16,7 +16,7 @@ This system is composed of the following parts.
 
 Raspberry Pi connects the infrared rays sensor by GPIO. And it comminucates with the Android application on the device by Bluetooth Low Energy.
 
-The infrared rays sensor receives infrared rays from the remote control. When it receives an infrared ray, Raspberry Pi sends the advertising packet to the Android device. When the device receives the packet, the Android application draws infrared radiation effects from the remote control shown the display.
+The infrared rays sensor receives infrared rays from the remote control. When it receives an infrared ray, Raspberry Pi broadcasts the advertising packet to the Android device. When the device receives the packet, the Android application draws infrared radiation effects from the remote control shown the display.
 
 ## System requrements
 
@@ -46,7 +46,7 @@ The circuit diagram that connects the Raspberry Pi and the infrared rays sensor 
 
 ### ri_advertiser
 
-The Python 3 script that detects the infrared reception by GPIO and sends advertising packets by Bluetooth Low Energy.
+The Python 3 script that detects the infrared reception by GPIO and broadcasts advertising packets by Bluetooth Low Energy.
 
 ### RI_AR
 
