@@ -14,7 +14,7 @@ https://youtu.be/A28sL0VISwo
 * 赤外線センサ
 * Androidアプリ
 
-Raspberry Piは、GPIO経由で赤外線センサと接続します。また、Bluetooth Low Energyを用いてAndroidデバイスと連携します。
+Raspberry Piは、GPIO経由で赤外線センサと接続します。また、Bluetooth Low Energyを用いてAndroidデバイスと連携します。
 
 赤外線センサは、リモコンからの赤外線を受信します。赤外線を検出すると、Raspberry PiはAndroidデバイスにアドバタイジングパケットを送信します。そのパケットを受信したAndroidデバイスは、画面上のリモコンから赤外線が放射されるエフェクトを描きます。
 
